@@ -12,7 +12,7 @@ export interface ApiScheme {
 export interface Movie {
   adult: boolean;
   backdrop_path: string;
-  genre_ids: number[];
+  genres: Genre[];
   id: number;
   original_language: string;
   original_title: string;
@@ -24,6 +24,13 @@ export interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  tagline: string;
+  budget: number;
+}
+
+export interface Genre {
+  id: number;
+  name: string;
 }
 
 @Injectable({
@@ -38,7 +45,7 @@ export class MovieService {
     );
   }
   getMovieDetails(id: string) {
-    return this.http.get<ApiScheme>(
+    return this.http.get<Movie>(
       `${environment.baseUrl}/movie/${id}?api_key=${environment.apiKey}`
     );
   }
