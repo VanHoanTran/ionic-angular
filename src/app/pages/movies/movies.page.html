@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Trending Movies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item button *ngFor="let item of movies">
+      <ion-label>
+        {{item.title}}
+        <p>{{item.release_date | date: 'y'}}</p>
+      </ion-label>
+      <ion-badge slot="end" color="success"> {{ item.vote_average }}</ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>
